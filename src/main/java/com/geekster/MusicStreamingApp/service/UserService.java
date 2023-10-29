@@ -48,7 +48,7 @@ public class UserService {
             user.setPassword(encryptedPassword);
             userRepository.save(user);
 
-            return "Signed up successfully";
+            return "Signed up successfully. Your id is " + user.getUserId();
         }
         catch (NoSuchAlgorithmException e) {
             return "Internal server error. Please try again later";
