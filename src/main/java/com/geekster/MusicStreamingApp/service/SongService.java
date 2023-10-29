@@ -8,7 +8,6 @@ import com.geekster.MusicStreamingApp.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import org.springframework.security.access.AccessDeniedException;
 
 import java.util.List;
 
@@ -78,7 +77,7 @@ public class SongService {
 
         // Check the user has admin role
         if(existingUser.getUserRole() != UserRole.ADMIN_ROLE) {
-            throw new AccessDeniedException("Only admin can able to add songs"); // returns message to non-admin user
+            throw new RuntimeException("Only admin can able to add songs"); // returns message to non-admin user
         }
 
         return songRepository.findById(songId).orElseThrow();
@@ -95,7 +94,7 @@ public class SongService {
 
         // Check the user has admin role
         if(existingUser.getUserRole() != UserRole.ADMIN_ROLE) {
-            throw new AccessDeniedException("Only admin can able to add songs"); // returns message to non-admin user
+            throw new RuntimeException("Only admin can able to add songs"); // returns message to non-admin user
         }
 
         return songRepository.findAll();
