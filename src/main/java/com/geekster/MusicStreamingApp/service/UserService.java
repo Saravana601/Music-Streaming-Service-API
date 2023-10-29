@@ -5,7 +5,6 @@ import com.geekster.MusicStreamingApp.model.UserAuthentication;
 import com.geekster.MusicStreamingApp.model.dto.SignInInput;
 import com.geekster.MusicStreamingApp.model.enums.UserRole;
 import com.geekster.MusicStreamingApp.repository.IUserRepository;
-import com.geekster.MusicStreamingApp.service.utility.EmailHandler;
 import com.geekster.MusicStreamingApp.service.utility.PasswordEncrypter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,9 +84,7 @@ public class UserService {
                 existingUser.setSignedIn(true);
                 userRepository.save(existingUser);
 
-                // Sending token to user mail
-                EmailHandler.sendMail(existingUser.getEmail(),"Token for future use", token.getTokenValue());
-                return "Token value - "+ token.getTokenValue() +". Also token sent to your email";
+                return "Token value - "+ token.getTokenValue();
             }
             else {
                 return "User credentials are incorrect";
