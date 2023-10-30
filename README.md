@@ -11,7 +11,6 @@
     <img alt="Spring Boot" src="https://img.shields.io/badge/Spring Boot-3.1.5-yellow.svg" />
 </p>
 
-
 ## Overview
 The Music Streaming App is a web application designed to provide music enthusiasts with a platform to explore and enjoy music. It offers a range of features for both users and administrators, ensuring a comprehensive music streaming experience.
 
