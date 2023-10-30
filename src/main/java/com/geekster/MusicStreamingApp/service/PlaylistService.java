@@ -71,7 +71,7 @@ public class PlaylistService {
 
         // Checks the role of user
         if(user.getUserRole() != UserRole.NORMAL_ROLE) {
-            throw new RuntimeException("Only Normal user's can create playlist"); // returns message to other user
+            throw new RuntimeException("Only Normal user's can access playlist"); // returns message to other user
         }
 
         return playlistRepository.findAll();
@@ -95,7 +95,7 @@ public class PlaylistService {
 
         // Checks the role of user
         if(user.getUserRole() != UserRole.NORMAL_ROLE) {
-            return "Only Normal user's can delete playlist"; // returns message to other user
+            return "Only Normal user's can update playlist"; // returns message to other user
         }
 
         // Finding playlist by id
@@ -104,7 +104,7 @@ public class PlaylistService {
 
         // Checks the playlist is his playlist
         if (!playlist.getUser().equals(user)) {
-            return "Unauthorized: You don't have permission to delete this playlist";
+            return "Unauthorized: You don't have permission to update this playlist";
         }
 
         playlist.setName(playlistName);

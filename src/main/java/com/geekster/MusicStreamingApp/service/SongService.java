@@ -94,7 +94,7 @@ public class SongService {
 
         // Check the user has admin role
         if(existingUser.getUserRole() != UserRole.ADMIN_ROLE) {
-            throw new RuntimeException("Only admin can able to add songs"); // returns message to non-admin user
+            throw new RuntimeException("Only admin can able to access songs"); // returns message to non-admin user
         }
 
         return songRepository.findAll();
@@ -112,7 +112,7 @@ public class SongService {
 
         // Check the user has admin role
         if(existingUser.getUserRole() != UserRole.ADMIN_ROLE) {
-            return "Only admin can able to add songs"; // returns message to non-admin user
+            return "Only admin can able to update songs"; // returns message to non-admin user
         }
 
         Song existingSong = songRepository.findById(songId).orElseThrow();
@@ -124,7 +124,7 @@ public class SongService {
         existingSong.setPlaylists(updatedSong.getPlaylists());
 
         songRepository.save(existingSong);
-        return "Sng updated successfully";
+        return "Song updated successfully";
     }
 
 
@@ -141,7 +141,7 @@ public class SongService {
 
         // Check the user has admin role
         if(existingUser.getUserRole() != UserRole.ADMIN_ROLE) {
-            return "Only admin can able to add songs"; // returns message to non-admin user
+            return "Only admin can able to delete songs"; // returns message to non-admin user
         }
 
         songRepository.deleteById(songId);
